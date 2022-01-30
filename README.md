@@ -22,6 +22,11 @@ When I search for a title
 
 Then the data is persistent and I am able to browse again through previous searches
 
+
+
+![image](https://user-images.githubusercontent.com/80355222/151711874-71773847-4424-490d-8386-54fdfd8e2680.png)
+
+
 ## Screenshots
 
 
