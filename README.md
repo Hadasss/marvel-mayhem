@@ -5,7 +5,7 @@ As a movie enthusiast
 
 I want to know if a certain book title was made into a movie
 
-So that I can watch my favorite big screen version of my favirite books.
+So that I can watch the big screen version of my favirite books.
 
 ## Acceptance Criteria
 Given a dashboard with input fiels to search for book and movie titles
