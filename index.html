@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/css/styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+  </head>
+  <body class="h-14 bg-gradient-to-r from-sky-500 to-indigo-500">
+    <header
+      class="flex justify-center mt-6 text-6xl font-mono text-white underline md:flex"
+    >
+      Movified
+    </header>
+
+    <!--sention for brief tutorial or description of site functions-->
+    <section class="guide flex text-white text-2xl font-serif md:flex p-4">
+      <p>
+        This will be a tutorial on using the site. Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Optio error, iste tempore vel voluptatibus
+        in placeat fugiat? Reiciendis suscipit saepe id, repudiandae neque hic
+        ex quibusdam praesentium iusto nemo necessitatibus.
+      </p>
+    </section>
+
+    <section class="cards flex justify-evenly text-2xl text-cyan-700 mt-10">
+      <!--section for google books API to update. feel free to add id's as needed-->
+      <div id="book">
+        <p id="book-title" class="flex justify-center text-4xl text-white">
+          Book Title
+        </p>
+        <img
+          src="./assets/images/card-placeholder.png"
+          alt="Book cover art"
+          class="border-4 border-stone-600 rounded-md shadow-2xl"
+        />
+      </div>
+
+      <!--sention for movie IMDB API to update. feel free to add id's as needed-->
+      <div id="movie">
+        <p id="movie-title" class="flex justify-center text-4xl text-white">
+          Movie Title
+        </p>
+        <img
+          src="./assets/images/card-placeholder.png"
+          alt="Movie cover art"
+          class="border-4 border-stone-600 rounded-md shadow-2xl"
+        />
+      </div>
+    </section>
+
+    <!--sention for user input and searching both databases-->
+    <section class="flex justify-center mt-6 text-2xl font-serif">
+      <form>
+        <!--input for book/movie title-->
+        <label for="book-input"></label>
+        <input
+          type="text"
+          id="book-name"
+          placeholder="Book or Movie Title"
+          class="bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-white text-xl text-mono shadow-2xl p-1"
+        />
+      </form>
+      <div>
+        <button
+          id="search-bttn"
+          type="button"
+          class="bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-white text-xl text-mono shadow-2xl p-1"
+        >
+          Search
+        </button>
+      </div>
+    </section>
+  </body>
+  <footer>
+    <p>Made By Bryan, Chris, Dave and Hadas!</p>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</html>

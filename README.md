@@ -8,7 +8,9 @@ I want to know if a certain book title was made into a movie
 So that I can watch the big screen version of my favirite books.
 
 ## Acceptance Criteria
-Given a dashboard with input fiels to search for book and movie titles
+Given a dashboard with input field to search for book and movie titles
+
+*1/30/22: added basic HTML Layout with input field to supply search criteria for API's 
 
 When I search for a title
 
