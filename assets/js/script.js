@@ -1,5 +1,5 @@
 // bookSearchBtn.addEventListener("click", bookInputHandler);
-const searchBtn = document.querySelector("#search-bttn");
+const searchBtn = document.querySelector(".search-bttn");
 let formInput = document.querySelector("#book-name");
 const heroNameDisplay = document.querySelector(".hero-name-display");
 
@@ -36,6 +36,7 @@ const getfetchResponse = function (searchInput) {
 
 const InputHandler = function (event) {
   event.preventDefault();
+  console.log("clicked");
   let searchInput = formInput.value.trim();
 
   if (searchInput) {
