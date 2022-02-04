@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // bookSearchBtn.addEventListener("click", bookInputHandler);
 const searchBtn = document.querySelector(".search-bttn");
 let formInput = document.querySelector("#book-name");
@@ -67,7 +66,3 @@ const InputHandler = function (event) {
 
 comicsBtn.addEventListener("click", comicsBtnDisplay);
 searchBtn.addEventListener("click", InputHandler);
-=======
-// google books api
-// api key: AIzaSyAmDINk08vcyJZKB48vQpUzPvBoI01-2qQ
->>>>>>> 47a7c112959fddce619de0901c2da22723f5892c
