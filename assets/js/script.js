@@ -1,6 +1,5 @@
-// bookSearchBtn.addEventListener("click", bookInputHandler);
-const searchBtn = document.querySelector("#search-bttn");
-let formInput = document.querySelector("#book-name");
+const searchBtn = document.querySelector(".hero-search");
+let formInput = document.querySelector(".hero-search-input");
 const heroNameDisplay = document.querySelector(".hero-name-display");
 
 const getfetchResponse = function (searchInput) {
@@ -15,7 +14,7 @@ const getfetchResponse = function (searchInput) {
         response.json().then(function (data) {
           console.log(data, searchInput);
           let heroNameTitle = document.createElement("h3");
-          // add classes according to Dave/Bryan
+          // heroNameTitle.setAttribute("class", "");
           heroNameTitle.textContent = data.data.results[0].name.text;
           const heroNameDiv = document.createElement("div");
           // heroNameDiv.setAttribute("class", "");
