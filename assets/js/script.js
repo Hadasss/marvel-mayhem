@@ -26,6 +26,8 @@ const getfetchResponse = function (searchInput) {
           heroDescriptionP.textContent = data.data.results[0].description;
           heroNameDisplay.appendChild(heroNameTitle);
           heroNameDisplay.appendChild(heroDescriptionP);
+
+          // comicsBtnDisplay();
         });
       }
     })
@@ -44,6 +46,7 @@ const comicsBtnDisplay = function () {
   // create a for loop to loop through array of comic books. display first 10 results.
   let comicBookLi = document.createElement("li");
 
+  // append outside foor loop
   comicsTitle.appendChild(comicsDiv);
   comicsDiv.appendChild(comicsUl);
 
