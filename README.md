@@ -1,11 +1,11 @@
 # movified
 
 ## User Story
-As a movie enthusiast 
+As a Marvel enthusiast 
 
-I want to know if a certain book title was made into a movie
+I want to know details about my favorite superhero
 
-So that I can watch the big screen version of my favirite books.
+So i can find out how many comics contain my hero.
 
 ## Acceptance Criteria
 Given a dashboard with input field to search for book and movie titles
