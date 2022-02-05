@@ -1,11 +1,7 @@
 const searchBtn = document.querySelector(".search-bttn");
 let formInput = document.querySelector("#book-name");
 const heroNameDisplay = document.querySelector(".hero-name-display");
-<<<<<<< HEAD
-let heroGif = document.querySelector("hero-gif");
-=======
 let heroGif = document.querySelector(".hero-gif");
->>>>>>> feature/google-books
 const buttonsDiv = document.querySelector(".buttons");
 const comicsBtn = document.querySelector(".comics");
 const storiesBtn = document.querySelector(".stories");
@@ -14,11 +10,7 @@ let searchInput;
 
 // fetch request to display hero by search key. Marvel API.
 // dynamically generating elements to display user choice.
-<<<<<<< HEAD
-const getfetchResponse = function (searchInput) {
-=======
 const getHeroName = function (searchInput) {
->>>>>>> feature/google-books
   let url =
     "https://gateway.marvel.com/v1/public/characters?name=" +
     searchInput +
@@ -35,11 +27,7 @@ const getHeroName = function (searchInput) {
           let heroDescriptionP = document.createElement("p");
           // heroDescriptionP.setAttribute("class", "");
           heroDescriptionP.textContent = data.data.results[0].description;
-<<<<<<< HEAD
-
-=======
           buttonsDiv.setAttribute("class", "buttons visible");
->>>>>>> feature/google-books
           getHeroGif(searchInput);
 
           heroNameDisplay.appendChild(heroNameTitle);
@@ -63,20 +51,11 @@ const getHeroGif = function (searchInput) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data, searchInput);
-<<<<<<< HEAD
-          // heroNameDisplay.appendChild(gifContainerDiv); // BUG!!
-          let gifRandomIndex = Math.floor(Math.random() * 50);
-          console.log(gifRandomIndex);
-          let gifSrc = `${data.data[gifRandomIndex].url}.gif`;
-          console.log(gifSrc);
-          heroGif.setAttribute("src", gifSrc);
-=======
           let gifRandomIndex = Math.floor(Math.random() * 50);
           console.log(gifRandomIndex);
           let gifSrc = data.data[gifRandomIndex].images.original.url;
           console.log(gifSrc);
-          heroGif.setAttribute("src", gifSrc); // BUG Uncaught (in promise) TypeError: Cannot read properties of null (reading 'setAttribute')
->>>>>>> feature/google-books
+          heroGif.setAttribute("src", gifSrc);
         });
       }
     })
@@ -121,16 +100,9 @@ const comicsBtnDisplay = function () {
 };
 
 // function to handle user input for first fetch.
-<<<<<<< HEAD
-const InputHandler = function (event) {
-  event.preventDefault();
-  // heroNameDisplay.innerHTML = "";
-  let searchInput = formInput.value.trim();
-=======
 const InputHandler = function () {
   // heroNameDisplay.innerHTML = "";
   searchInput = formInput.value.trim();
->>>>>>> feature/google-books
 
   if (searchInput) {
     getHeroName(searchInput);

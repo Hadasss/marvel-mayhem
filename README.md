@@ -1,12 +1,8 @@
 # movified
 
 ## User Story
-<<<<<<< HEAD
-As a Marvel enthusiast 
-=======
 
-As a movie enthusiast
->>>>>>> feature/google-books
+As a Marvel enthusiast
 
 I want to know details about my favorite superhero
 
