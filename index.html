@@ -17,11 +17,10 @@
 		</style>
 	</head>
 
-	<body class="bg-stone-50 from-sky-500 to-indigo-500">
+	<body class="bg-stone-50">
 		<!--Hero search-bar-->
 		
-		<section class=" flex border-4 border-black bg-gradient-to-r //from-orange-500 m-2 p-10 ">
-
+		<section class=" flex justify-center border-4 border-black bg-gradient-to-r from-blue-800 to-yellow-500 m-2 p-9 shadow-2xl ">
 			<form class="p-2">
 				<!--input for book/movie title-->
 				<label for="book-input"></label>
@@ -32,48 +31,54 @@
          			class="hero-search-input"
 				/>
 			</form>
-			<div>
-				<button	type="button" class="bg-stone-50 hover:bg-blue-800 rounded-full text-purple text-2xl p-1 shadow-2xl search-bttn">Search</button>
+			
+				<button	type="button" class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-2xl p-1 shadow-2xl search-bttn">Search</button>
 			</div>
+
+
 			</section>
 
-			<!-- FYI added class "extra-info"-->
-		<section class="flex-wrap extra-info">
-			<div class="hero-name-display">
+			<div class="hero-name-display flex-wrap border-4 border-black bg-gradient-to-r from-blue-500 to-orange-500 m-2 p-10 invisible visible">
 				<!-- FYI added class to img and removed attributes -->
-				<img class="hero-gif invisible visible" src="#"/>
+				<img class="hero-gif" src="#"/>
 			</div>
-			<div class="flex buttons invisible visible">
+
+			<!-- FYI added class "extra-info" -->
+		<section class="extra-info flex-wrap border-4 border-black bg-gradient-to-r from-blue-500 to-orange-500 m-2 p-10">
+
+			<div class="flex-wrap">
 			<button
 				
 				type="button"
-				class="bg-blue-600 hover:bg-blue-800 rounded-full ml-4 text-purple text-3xl shadow-2xl p-3 comics"
+				class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 comics
+				border-dashed border-4 border-amber-300"
 			>
 				COMICS
 			</button>
 			<button
 				type="button"
-				class="bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-purple text-3xl shadow-2xl p-3 stories"
+				class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 stories
+				border-dashed border-4 border-amber-300"
 			>
 				STORIES
 			</button>
 			<button
 				type="button"
-				class="bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-purple text-3xl shadow-2xl p-3 events"
+				class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 events
+				border-dashed border-4 border-amber-300"
 			>
 				EVENTS
 			</button>
-		</section>
-
-		<div id="appearances" class="p-4">
 			<button
 				type="button"
-				class="bg-blue-600 hover:bg-blue-800 rounded-full text-purple text-3xl shadow-2xl p-3 px-11 movie-appearances invisible visible"
+				class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3  movie-appearances
+				border-dashed border-4 border-amber-300"
 			>
-				MOVIE APPEARANCES
+				MOVIES
 			</button>
 			</div>
-		</div>
+		</section>
+
 
 		<article class="movie-list" >
 			
