@@ -2,8 +2,6 @@
 
 ## User Story
 
-As a movie enthusiast
-
 As a Marvel enthusiast
 
 I want to know details about my favorite superhero
@@ -13,8 +11,6 @@ So i can find out how many comics contain my hero.
 ## Acceptance Criteria
 
 Given a dashboard with input field to search for book and movie titles
-
-\*1/30/22: added basic HTML Layout with input field to supply search criteria for API's
 
 When I search for a title
 
