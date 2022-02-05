@@ -16,10 +16,12 @@
 		</style>
 	</head>
 
-	<body class="h-14 bg-gradient-to-r from-sky-500 to-indigo-500 tracking-wide">
+	<body class="h-14 bg-stone-50 from-sky-500 to-indigo-500 tracking-wide">
+
+
 		<!--Hero search-bar-->
-		<section class="flex justify-center mt-6 text-2xl ">
-			<form>
+		<section class="flex justify-center mt-6 text-2xl border-4 border-black pt-20 m-5 bg-gradient-to-r from-orange-500 shadow-2xl md:max-w-2xl">
+			<form class="md:flex">
 				<!--input for book/movie title-->
 				<label for="book-input"></label>
         <!-- FYI added a class "hero-search-input" -->
@@ -27,29 +29,30 @@
 					type="text"
 					id="book-name"
 					placeholder="Search for Superhero!"
-          class="hero-search-input bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-purple text-3xl shadow-2xl p-3"
+          class="hero-search-input bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-purple text-3xl shadow-2xl p-3 border-3 border-black"
 				/>
 			</form>
 			<div>
-				<button	type="button"	class="bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-purple text-3xl shadow-2xl p-3 search-bttn">Search</button>
+				<button	type="button" class="bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-purple text-3xl shadow-2xl p-3 search-bttn">Search</button>
 			</div>
 		</section>
 
 		<section class="display:inline pt-40">
       <!-- FYI added class: hero-name-display -->
 			<div class="p-10 ml-6 hero-name-display">
-				<img src="./assets/images/card-placeholder.png" alt="Your Superhero" />
+				<!-- FYI added class to img and removed attributes. FYI need to add invisible class to img -->
+				<img class="hero-gif" src="#"/>
 			</div>
 
-      <!-- FYI buttons div should have a class of "hidden" and chenge to "visible" when a hero is displayed-->
-			<div class="buttons">
+     
+			<div class="buttons invisible">
 			<button type="button" class="bg-blue-600 hover:bg-blue-800 rounded-full ml-4 text-purple text-3xl shadow-2xl p-3 comics">COMICS</button>
 			<button type="button" class="bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-purple text-3xl shadow-2xl p-3 stories">STORIES</button>
 			<button type="button" class="bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-purple text-3xl shadow-2xl p-3 events">EVENTS</button>
 		</section>
 
 		<div id="appearances" class="p-4">
-			<button	type="button"	class="bg-blue-600 hover:bg-blue-800 rounded-full text-purple text-3xl shadow-2xl p-3 px-11 movie-appearances">MOVIE APPEARANCES</button>
+			<button	type="button" class="bg-blue-600 hover:bg-blue-800 rounded-full text-purple text-3xl shadow-2xl p-3 px-11 movie-appearances">MOVIE APPEARANCES</button>
 			</div>
 		</div>
 
