@@ -4,9 +4,11 @@
 
 As a movie enthusiast
 
-I want to know if a certain book title was made into a movie
+As a Marvel enthusiast
 
-So that I can watch the big screen version of my favirite books.
+I want to know details about my favorite superhero
+
+So i can find out how many comics contain my hero.
 
 ## Acceptance Criteria
 
