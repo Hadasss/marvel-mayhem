@@ -4,64 +4,85 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="./assets/images/icons8-boom-48.png"/>
+		<link rel="icon" href="./assets/images/icons8-boom-48.png" />
 		<link rel="stylesheet" href="./assets/css/css/styles.css" />
 		<script src="https://cdn.tailwindcss.com"></script>
 		<title>Hero Hub</title>
-    <link href="https://fonts.googleapis.com/css?family=Bangers:regular" rel="stylesheet" />
-    <style>
+		<link rel="shortcut icon" type="image/jpg" href="assets/images/favicon.ico"/>
+		<link href="https://fonts.googleapis.com/css?family=Bangers:regular" rel="stylesheet" />
+		<style>
 			body {
 				font-family: "Bangers", sans-serif;
 			}
 		</style>
 	</head>
 
-	<body class="h-14 bg-gradient-to-r from-sky-500 to-indigo-500 tracking-wide">
+	<body class="bg-stone-50">
 		<!--Hero search-bar-->
-		<section class="flex justify-center mt-6 text-2xl ">
-			<form>
+		
+		<section class=" flex justify-center border-4 border-black bg-gradient-to-r from-blue-800 to-yellow-500 m-2 p-9 shadow-2xl ">
+			<form class="p-2">
 				<!--input for book/movie title-->
 				<label for="book-input"></label>
-        <!-- FYI added a class "hero-search-input" -->
 				<input
 					type="text"
 					id="book-name"
 					placeholder="Search for Superhero!"
-          class="hero-search-input bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-purple text-3xl shadow-2xl p-3"
+         			class="hero-search-input"
 				/>
 			</form>
-			<div>
-				<button	type="button"	class="bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-purple text-3xl shadow-2xl p-3 search-bttn">Search</button>
+			
+				<button	type="button" class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-2xl p-1 shadow-2xl search-bttn">Search</button>
+			</div>
+
+
+			</section>
+
+			<div class="hero-name-display flex-wrap border-4 border-black bg-gradient-to-r from-blue-500 to-orange-500 m-2 p-10 invisible visible">
+				<!-- FYI added class to img and removed attributes -->
+				<img class="hero-gif" src="#"/>
+			</div>
+
+			<!-- FYI added class "extra-info" -->
+		<section class="extra-info flex-wrap border-4 border-black bg-gradient-to-r from-blue-500 to-orange-500 m-2 p-10">
+
+			<div class="flex-wrap">
+			<button
+				
+				type="button"
+				class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 comics
+				border-dashed border-4 border-amber-300"
+			>
+				COMICS
+			</button>
+			<button
+				type="button"
+				class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 stories
+				border-dashed border-4 border-amber-300"
+			>
+				STORIES
+			</button>
+			<button
+				type="button"
+				class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 events
+				border-dashed border-4 border-amber-300"
+			>
+				EVENTS
+			</button>
+			<button
+				type="button"
+				class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3  movie-appearances
+				border-dashed border-4 border-amber-300"
+			>
+				MOVIES
+			</button>
 			</div>
 		</section>
 
-		<section class="display:inline pt-40">
-      <!-- FYI added class: hero-name-display -->
-			<div class="p-10 ml-6 hero-name-display">
-				<img src="./assets/images/card-placeholder.png" alt="Your Superhero" />
-			</div>
-
-      <!-- FYI buttons div should have a class of "hidden" and chenge to "visible" when a hero is displayed-->
-			<div class="buttons">
-			<button type="button" class="bg-blue-600 hover:bg-blue-800 rounded-full ml-4 text-purple text-3xl shadow-2xl p-3 comics">COMICS</button>
-			<button type="button" class="bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-purple text-3xl shadow-2xl p-3 stories">STORIES</button>
-			<button type="button" class="bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-purple text-3xl shadow-2xl p-3 events">EVENTS</button>
-		</section>
-
-		<div id="appearances" class="p-4">
-			<button	type="button"	class="bg-blue-600 hover:bg-blue-800 rounded-full text-purple text-3xl shadow-2xl p-3 px-11 movie-appearances">MOVIE APPEARANCES</button>
-			</div>
-		</div>
 
 		<article class="movie-list" >
 			
 		</article>
-    <footer>
-      <p>Made By Bryan, Chris, Dave and Hadas!</p>
-    </footer>
     <script src="assets/js/script.js"></script>
 	</body>
 </html>
-
-		
-
