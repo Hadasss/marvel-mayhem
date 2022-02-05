@@ -58,8 +58,12 @@ const getHeroGif = function (searchInput) {
           console.log(gifRandomIndex);
           let gifSrc = data.data[gifRandomIndex].images.original.url;
           console.log(gifSrc);
+<<<<<<< HEAD
           heroGif.setAttribute("src", gifSrc);
           heroGif.setAttribute("class", "visible");
+=======
+          heroGif.setAttribute("src", gifSrc); // BUG Uncaught (in promise) TypeError: Cannot read properties of null (reading 'setAttribute')
+>>>>>>> 304cea06db12414929fd976a86531e4f99bb4011
         });
       }
     })

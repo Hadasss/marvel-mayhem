@@ -2,6 +2,8 @@
 
 ## User Story
 
+As a movie enthusiast
+
 As a Marvel enthusiast
 
 I want to know details about my favorite superhero
