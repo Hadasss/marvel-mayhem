@@ -2,11 +2,14 @@ const searchBtn = document.querySelector(".search-bttn");
 let formInput = document.querySelector("#book-name");
 const heroNameDisplay = document.querySelector(".hero-name-display");
 let heroGif = document.querySelector(".hero-gif");
+const extraInfoDiv = document.querySelector(".extra-info");
 const buttonsDiv = document.querySelector(".buttons");
 const comicsBtn = document.querySelector(".comics");
 const storiesBtn = document.querySelector(".stories");
 const eventsBtn = document.querySelector(".events");
 let searchInput;
+const heroNameTitle = document.createElement("h3");
+const heroDescriptionP = document.createElement("p");
 
 // fetch request to display hero by search key. Marvel API.
 // dynamically generating elements to display user choice.
@@ -21,11 +24,11 @@ const getHeroName = function (searchInput) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data, searchInput);
-          let heroNameTitle = document.createElement("h3");
-          // heroNameTitle.setAttribute("class", "");
+
+          // FYI heroNameTitle.setAttribute("class", "");
           heroNameTitle.textContent = data.data.results[0].name;
-          let heroDescriptionP = document.createElement("p");
-          // heroDescriptionP.setAttribute("class", "");
+
+          // FYI heroDescriptionP.setAttribute("class", "");
           heroDescriptionP.textContent = data.data.results[0].description;
           buttonsDiv.setAttribute("class", "buttons visible");
           getHeroGif(searchInput);
@@ -56,6 +59,7 @@ const getHeroGif = function (searchInput) {
           let gifSrc = data.data[gifRandomIndex].images.original.url;
           console.log(gifSrc);
           heroGif.setAttribute("src", gifSrc);
+          heroGif.setAttribute("class", "visible");
         });
       }
     })
@@ -77,10 +81,9 @@ const comicsBtnDisplay = function () {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(searchInput);
-          console.log("clicked");
           const comicsDiv = document.createElement("div");
           // comicsDiv.setAttribute("class", "");
-          const comicsTitle = document.createElement("h3");
+          let comicsTitle = document.createElement("h3");
           comicsTitle.textContent = "Your hero appeared in these issues:";
           const comicsUl = document.createElement("ul");
 
@@ -91,6 +94,8 @@ const comicsBtnDisplay = function () {
           comicsDiv.appendChild(comicsUl);
 
           buttonsDiv.appendChild(comicsDiv);
+
+          extraInfoDiv.appendChild(comicsDiv);
         });
       }
     })
