@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="./assets/images/icons8-boom-48.png"/>
+		<link rel="icon" href="./assets/images/icons8-boom-48.png" />
 		<link rel="stylesheet" href="./assets/css/css/styles.css" />
 		<script src="https://cdn.tailwindcss.com"></script>
 		<title>Hero Hub</title>
@@ -17,10 +17,12 @@
 		</style>
 	</head>
 
-	<body class="h-14 bg-gradient-to-r from-sky-500 to-indigo-500 tracking-wide">
+	<body class="flex bg-stone-50 from-sky-500 to-indigo-500 tracking-wide">
 		<!--Hero search-bar-->
-		<section class="flex justify-center mt-6 text-2xl ">
-			<form>
+		
+		<section class=" flex border-4 border-black bg-gradient-to-r //from-orange-500 m-3 place-content-start p-6">
+
+			<form class=" justify p-2">
 				<!--input for book/movie title-->
 				<label for="book-input"></label>
         <!-- FYI added a class "hero-search-input" -->
@@ -28,17 +30,17 @@
 					type="text"
 					id="book-name"
 					placeholder="Search for Superhero!"
-          class="hero-search-input bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-purple text-3xl shadow-2xl p-3"
+          class="hero-search-input"
 				/>
 			</form>
 			<div>
-				<button	type="button" class="bg-blue-600 hover:bg-blue-800 rounded-full ml-5 text-purple text-3xl shadow-2xl p-3 search-bttn">Search</button>
+				<button	type="button" class="bg-stone-50 hover:bg-blue-800 rounded-full text-purple text-2xl p-1 shadow-2xl search-bttn">Search</button>
 			</div>
 		</section>
 
-		<section class="display:inline pt-40">
+		<section class="display:flex">
       <!-- FYI added class: hero-name-display -->
-			<div class="p-10 ml-6 hero-name-display">
+			<div class="hero-name-display">
 				<!-- FYI added class to img and removed attributes -->
 				<img class="hero-gif"/>
 			</div>
@@ -83,6 +85,3 @@
     <script src="assets/js/script.js"></script>
 	</body>
 </html>
-
-		
-
