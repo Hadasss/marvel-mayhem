@@ -30,11 +30,13 @@ const getHeroName = function (searchInput) {
 
           // FYI heroDescriptionP.setAttribute("class", "");
           heroDescriptionP.textContent = data.data.results[0].description;
-          buttonsDiv.setAttribute("class", "buttons visible");
+          // buttonsDiv.setAttribute("class", "buttons visible");
           getHeroGif(searchInput);
 
           heroNameDisplay.appendChild(heroNameTitle);
           heroNameDisplay.appendChild(heroDescriptionP);
+          heroNameDisplay.setAttribute("class", "visible");
+          buttonsDiv.setAttribute("class", "visible");
         });
       }
     })
@@ -58,12 +60,8 @@ const getHeroGif = function (searchInput) {
           console.log(gifRandomIndex);
           let gifSrc = data.data[gifRandomIndex].images.original.url;
           console.log(gifSrc);
-<<<<<<< HEAD
           heroGif.setAttribute("src", gifSrc);
           heroGif.setAttribute("class", "visible");
-=======
-          heroGif.setAttribute("src", gifSrc); // BUG Uncaught (in promise) TypeError: Cannot read properties of null (reading 'setAttribute')
->>>>>>> 304cea06db12414929fd976a86531e4f99bb4011
         });
       }
     })
