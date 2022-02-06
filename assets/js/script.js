@@ -5,11 +5,12 @@ let heroGif = document.querySelector(".hero-gif");
 const extraInfoDiv = document.querySelector(".extra-info");
 const buttonsDiv = document.querySelector(".buttons");
 const comicsBtn = document.querySelector(".comics");
-const storiesBtn = document.querySelector(".stories");
+// const storiesBtn = document.querySelector(".stories");
 const eventsBtn = document.querySelector(".events");
 let searchInput;
 const heroNameTitle = document.createElement("h3");
 const heroDescriptionP = document.createElement("p");
+const buttonsContentDiv = document.createElement("div");
 
 // fetch request to display hero by search key. Marvel API.
 // dynamically generating elements to display user choice.
@@ -24,13 +25,8 @@ const getHeroName = function (searchInput) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data, searchInput);
-
-          // FYI heroNameTitle.setAttribute("class", "");
           heroNameTitle.textContent = data.data.results[0].name;
-
-          // FYI heroDescriptionP.setAttribute("class", "");
           heroDescriptionP.textContent = data.data.results[0].description;
-          // buttonsDiv.setAttribute("class", "buttons visible");
           getHeroGif(searchInput);
 
           heroNameDisplay.appendChild(heroNameTitle);
@@ -82,22 +78,58 @@ const comicsBtnDisplay = function () {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(searchInput);
-          const comicsDiv = document.createElement("div");
-          // comicsDiv.setAttribute("class", "");
+          console.log(data, searchInput);
           let comicsTitle = document.createElement("h3");
           comicsTitle.textContent = "Your hero appeared in these issues:";
           const comicsUl = document.createElement("ul");
 
-          // create a for loop to loop through array of comic books. display first 10 results.
-          let comicBookLi = document.createElement("li");
+          for (let i = 0; i < 10; i++) {
+            const randomIndex = Math.floor(Math.random() * 20);
+            let comicBookLi = document.createElement("li");
+            comicBookLi.textContent =
+              data.data.results[0].comics.items[randomIndex].name;
+            comicsUl.appendChild(comicBookLi);
+          }
 
-          comicsTitle.appendChild(comicsDiv);
-          comicsDiv.appendChild(comicsUl);
+          buttonsContentDiv.appendChild(comicsTitle);
+          buttonsContentDiv.appendChild(comicsUl);
+          buttonsDiv.appendChild(buttonsContentDiv);
+          extraInfoDiv.appendChild(buttonsDiv);
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
 
-          buttonsDiv.appendChild(comicsDiv);
+const eventsBtnDisplay = function () {
+  let eventsUrl =
+    "https://gateway.marvel.com/v1/public/characters?name=" +
+    searchInput +
+    "&apikey=3bc97c9b0187fdee4f75f60b267b51ad";
 
-          extraInfoDiv.appendChild(comicsDiv);
+  fetch(eventsUrl)
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          console.log(data);
+          let eventsTitle = document.createElement("h3");
+          eventsTitle.textContent = "Your hero took part in these events:";
+          const eventsUl = document.createElement("ul");
+
+          for (let i = 0; i < 10; i++) {
+            let randomIndex = Math.floor(Math.random() * 20);
+            let eventsLi = document.createElement("li");
+            eventsLi.textContent =
+              data.data.results[0].events.items[randomIndex].name;
+            eventsUl.appendChild(eventsLi);
+          }
+
+          buttonsContentDiv.appendChild(eventsTitle);
+          buttonsContentDiv.appendChild(eventsUl);
+          buttonsDiv.appendChild(buttonsContentDiv);
+          extraInfoDiv.appendChild(buttonsDiv);
         });
       }
     })
@@ -108,7 +140,7 @@ const comicsBtnDisplay = function () {
 
 // function to handle user input for first fetch.
 const InputHandler = function () {
-  // heroNameDisplay.innerHTML = "";
+  buttonsContentDiv.innerHTML = "";
   searchInput = formInput.value.trim();
 
   if (searchInput) {
@@ -121,10 +153,15 @@ const InputHandler = function () {
 };
 
 const comicsBtnHandler = function () {
-  if (searchInput) {
-    comicsBtnDisplay();
-  }
+  buttonsContentDiv.innerHTML = "";
+  comicsBtnDisplay();
+};
+
+const eventsBtnHandler = function () {
+  buttonsContentDiv.innerHTML = "";
+  eventsBtnDisplay();
 };
 
 comicsBtn.addEventListener("click", comicsBtnHandler);
+eventsBtn.addEventListener("click", eventsBtnHandler);
 searchBtn.addEventListener("click", InputHandler);
