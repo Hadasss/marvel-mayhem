@@ -1,96 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" href="./assets/images/icons8-boom-48.png" />
-		<link rel="stylesheet" href="./assets/css/style.css" />
-		<script src="https://cdn.tailwindcss.com"></script>
-		<title>Hero Hub</title>
-		<link rel="shortcut icon" type="image/jpg" href="assets/images/favicon.ico"/>
-		<link href="https://fonts.googleapis.com/css?family=Bangers:regular" rel="stylesheet" />
-		<style>
-			body {
-				font-family: "Bangers", sans-serif;
-			}
-		</style>
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/images/icons8-boom-48.png" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Hero Hub</title>
+    <link
+      rel="shortcut icon"
+      type="image/jpg"
+      href="assets/images/favicon.ico"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Bangers:regular"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Bangers", sans-serif;
+      }
+    </style>
+  </head>
 
-	<body class="bg-stone-50">
-		<!--Hero search-bar-->
-		
-		<section class=" flex justify-center border-4 border-black bg-gradient-to-r from-blue-800 to-yellow-500 m-2 p-9 shadow-2xl ">
-			<form class="p-2">
-				<!--input for book/movie title-->
-				<label for="book-input"></label>
-				<input
-					type="text"
-					id="book-name"
-					placeholder="Search for Superhero!"
-         			class="hero-search-input"
-				/>
-			</form>
-			
-				<button	type="button" class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-2xl p-1 shadow-2xl search-bttn">Search</button>
-			</div>
-			</section>
+  <body class="bg-stone-50">
+    <!--Hero search-bar-->
 
-			<div class="hero-name-display hidden flex-wrap border-4 border-black bg-gradient-to-r from-blue-500 to-orange-500 m-2 p-10">
-				
-				<img class="hero-gif" src="#"/>
-			</div>
+    <section
+      class="flex justify-center border-4 border-black bg-gradient-to-r from-blue-800 to-yellow-500 m-2 p-9 shadow-2xl"
+    >
+      <form class="p-2">
+        <!--input for book/movie title-->
+        <label for="book-input"></label>
+        <input
+          type="text"
+          id="book-name"
+          placeholder="Search for Superhero!"
+          class="hero-search-input"
+        />
+      </form>
 
-			
-		<section class="extra-info flex-wrap border-4 border-black bg-gradient-to-r from-blue-500 to-orange-500 m-2 p-10">
+      <button
+        type="button"
+        class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-2xl p-1 shadow-2xl search-bttn"
+      >
+        Search
+      </button>
+    </section>
 
-			<!-- FYI class name "buttons hidden" -->
-			<div class="flex-wrap buttons hidden">
-			<button
-				
-				type="button"
-				class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 comics
-				border-dashed border-4 border-amber-300"
-			>
-				COMICS
-			</button>
-			<button
-				type="button"
-				class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 stories
-				border-dashed border-4 border-amber-300"
-			>
-				STORIES
-			</button> 
-			<button
-				type="button"
-				class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3  movie-appearances
-				border-dashed border-4 border-amber-300"
-			>
-				MOVIES
-			</button>
-			</div>
-		</section>
+    <div
+      class="hero-name-display hidden flex-wrap border-4 border-black bg-gradient-to-r from-blue-500 to-orange-500 m-2 p-10"
+    >
+      <img class="hero-gif" src="#" />
+    </div>
 
+    <section
+      class="extra-info flex-wrap border-4 border-black bg-gradient-to-r from-blue-500 to-orange-500 m-2 p-10"
+    >
+      <!-- FYI class name "buttons hidden" -->
+      <div class="flex-wrap buttons hidden">
+        <button
+          type="button"
+          class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 comics border-dashed border-4 border-amber-300"
+        >
+          COMICS
+        </button>
 
-		<article class="movie-list" >
-			
-		</article>
+        <button
+          type="button"
+          class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 events border-dashed border-4 border-amber-300"
+        >
+          EVENTS
+        </button>
+        <button
+          type="button"
+          class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 movie-appearances border-dashed border-4 border-amber-300"
+        >
+          MOVIES
+        </button>
+      </div>
+    </section>
 
+    <article class="movie-list"></article>
 
-<div class="teams-container">
-	<div class="build-team">
-<h2 class="build-title">Build your super dream team!</h2>
-<p>Write the names of 5 heroes you want on your team.</p>
-<input type="text" placeholder="add Superhero!"
-class="add-hero">
-<button class="add-hero-btn">ADD</button>
-	</div>
-
-
-
-</div>
-
+    <div class="teams-container">
+      <div class="build-team">
+        <h2 class="build-title">Build your super dream team!</h2>
+        <p>Write the names of 5 heroes you want on your team.</p>
+        <input type="text" placeholder="add Superhero!" class="add-hero" />
+        <button class="add-hero-btn">ADD</button>
+      </div>
+    </div>
 
     <script src="assets/js/script.js"></script>
-	</body>
+  </body>
 </html>

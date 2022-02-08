@@ -246,7 +246,8 @@ const saveTeam = function () {
   teams.push(team);
 
   localStorage.setItem("teams", JSON.stringify(teams));
-  console.log(teams, team);
+  console.log(teams);
+  console.log(team);
 
   // TODO load scoreboard
 
