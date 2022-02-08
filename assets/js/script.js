@@ -11,6 +11,13 @@ let searchInput;
 const heroNameTitle = document.createElement("h3");
 const heroDescriptionP = document.createElement("p");
 const buttonsContentDiv = document.createElement("div");
+const teamsContainerDiv = document.querySelector(".teams-container");
+let teamMemberInput = document.querySelector(".add-hero");
+const addHeroBtn = document.querySelector(".add-hero-btn");
+const teamDiv = document.createElement("div");
+teamDiv.setAttribute("id", "teamDiv");
+let teamTitle = document.createElement("h3");
+let teams = [];
 
 // fetch request to display hero by search key. Marvel API.
 // dynamically generating elements to display user choice.
@@ -162,6 +169,51 @@ const eventsBtnHandler = function () {
   eventsBtnDisplay();
 };
 
+// dream team game
+const createTeam = function () {
+  // clear teamDiv from previous user
+  teamDiv.innerHTML = "";
+  // append new teamDiv to main din
+  // addMember();
+  // take input for team name
+  // TODO when all 5 team members were added - create object for localStorage
+  // TODO display team on score board
+};
+
+// functionality to add each hero and grab his score from the API
+const addMember = function () {
+  // create elements to display chosen hero
+  if (teamMemberInput) {
+    // for (let i = 0; i < 5; i++) {}
+    var member = document.createElement("p");
+    member.textContent = teamMemberInput.value.trim();
+    console.log(member.textContent);
+
+    teamDiv.appendChild(member);
+    // clear inpur
+    teamMemberInput.value = "";
+  }
+  // disable add button after 5 team members
+  var count = teamDiv.childElementCount;
+  if (count >= 5) {
+    addHeroBtn.disabled = true;
+
+    let teamNameInput = document.createElement("input");
+    let teamNameTitle = document.createElement("h3");
+    teamDiv.appendChild(teamNameInput);
+    teamNameTitle.textContent = teamNameInput.value.trim();
+
+    teamDiv.appendChild(teamNameTitle);
+  }
+
+  teamsContainerDiv.appendChild(teamDiv);
+
+  // TODO store name+score in an array of key:value objects
+  // TODO build objects for each team with total score and team name and store in array
+  // TODO set up local storage for hero teams
+};
+
 comicsBtn.addEventListener("click", comicsBtnHandler);
 eventsBtn.addEventListener("click", eventsBtnHandler);
 searchBtn.addEventListener("click", InputHandler);
+addHeroBtn.addEventListener("click", addMember);
