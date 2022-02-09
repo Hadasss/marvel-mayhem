@@ -1,9 +1,10 @@
+const scoreboardBtn = document.querySelector(".score-board");
 const searchBtn = document.querySelector(".search-bttn");
 let formInput = document.querySelector("#book-name");
 const heroNameDisplay = document.querySelector(".hero-name-display");
 let heroGif = document.querySelector(".hero-gif");
 const extraInfoDiv = document.querySelector(".extra-info");
-const buttonsDiv = document.querySelector(".buttons");
+const buttonsDiv = document.querySelector("#buttons");
 const comicsBtn = document.querySelector(".comics");
 const moviesBtn = document.querySelector(".movie-appearances");
 const eventsBtn = document.querySelector(".events");
@@ -49,8 +50,10 @@ const getHeroName = function (searchInput) {
 
           heroNameDisplay.appendChild(heroNameTitle);
           heroNameDisplay.appendChild(heroDescriptionP);
-          heroNameDisplay.setAttribute("class", "visible");
-          buttonsDiv.setAttribute("class", "visible");
+          heroNameDisplay.classList.remove("hidden");
+          heroNameDisplay.classList.add("visible");
+          buttonsDiv.classList.remove("hidden");
+          buttonsDiv.classList.add("visible");
         });
       }
     })
@@ -197,18 +200,21 @@ const InputHandler = function () {
   }
 };
 
-const movieBtnHandler = function () {
-  buttonsContentDiv.innerHTML = "";
-  movieBtnDisplay(searchInput);
-};
-const comicsBtnHandler = function () {
-  buttonsContentDiv.innerHTML = "";
-  comicsBtnDisplay();
-};
+const buttonsHandler = function (e) {
+  let clickedBtn = e.target;
+  if (clickedBtn.textContent == comicsBtn.textContent) {
+    buttonsContentDiv.innerHTML = "";
+    comicsBtnDisplay();
+  }
 
-const eventsBtnHandler = function () {
-  buttonsContentDiv.innerHTML = "";
-  eventsBtnDisplay();
+  if (clickedBtn.textContent == eventsBtn.textContent) {
+    buttonsContentDiv.innerHTML = "";
+    eventsBtnDisplay();
+  }
+  if (clickedBtn.textContent == moviesBtn.textContent) {
+    buttonsContentDiv.innerHTML = "";
+    movieBtnDisplay(searchInput);
+  }
 };
 
 const addToSelectedHeroes = function (hero) {
@@ -274,13 +280,11 @@ const getHeroScore = function (heroName) {
       if (!hero) {
         return null;
       }
-
       return { name: hero.name, score: hero.comics.available };
     });
 };
 
 const saveTeam = function () {
-  // create object for team for localStorage
   const addScores = function () {
     let sum = 0;
     for (let i = 0; i < selectedHeroes.length; i++) {
@@ -288,26 +292,25 @@ const saveTeam = function () {
     }
     return sum;
   };
+  // create object for team for localStorage
   var team = {
     members: selectedHeroes,
     teamName: teamNameInput.value,
     totalScore: addScores(),
   };
-
   teams.push(team);
-
   localStorage.setItem("teams", JSON.stringify(teams));
-  console.log(teams);
+
   teamNameInput.textContent = "";
+  teamNameInput.disabled = true;
+  addTeamBtn.disabled = true;
+
+  const scoresTitle = document.createElement("h3");
+  scoresTitle.textContent = "Check out the scoreboard!";
+  chooseTeamNameContainer.appendChild(scoresTitle);
 };
 
-const displayScoreBoard = function () {
-  //
-};
-
-comicsBtn.addEventListener("click", comicsBtnHandler);
-eventsBtn.addEventListener("click", eventsBtnHandler);
-moviesBtn.addEventListener("click", movieBtnHandler);
+buttonsDiv.addEventListener("click", buttonsHandler);
 searchBtn.addEventListener("click", InputHandler);
 addHeroBtn.addEventListener("click", addTeamMember);
 addTeamBtn.addEventListener("click", saveTeam);
