@@ -1,3 +1,4 @@
+const scoreboardBtn = document.querySelector(".score-board");
 const searchBtn = document.querySelector(".search-bttn");
 let formInput = document.querySelector("#book-name");
 const heroNameDisplay = document.querySelector(".hero-name-display");
@@ -26,6 +27,8 @@ const selectedHeroes = [];
 let hero;
 
 let teams = [];
+
+const teamsScoreList = document.querySelector(".teams-list");
 
 if (localStorage.getItem("teams")) {
   teams = JSON.parse(localStorage.getItem("teams"));
@@ -200,6 +203,7 @@ const movieBtnHandler = function () {
   buttonsContentDiv.innerHTML = "";
   movieBtnDisplay(searchInput);
 };
+
 const comicsBtnHandler = function () {
   buttonsContentDiv.innerHTML = "";
   comicsBtnDisplay();
@@ -273,13 +277,11 @@ const getHeroScore = function (heroName) {
       if (!hero) {
         return null;
       }
-
       return { name: hero.name, score: hero.comics.available };
     });
 };
 
 const saveTeam = function () {
-  // create object for team for localStorage
   const addScores = function () {
     let sum = 0;
     for (let i = 0; i < selectedHeroes.length; i++) {
@@ -287,22 +289,22 @@ const saveTeam = function () {
     }
     return sum;
   };
+  // create object for team for localStorage
   var team = {
     members: selectedHeroes,
     teamName: teamNameInput.value,
     totalScore: addScores(),
   };
-
   teams.push(team);
-
   localStorage.setItem("teams", JSON.stringify(teams));
-  console.log(teams);
-  teamNameInput.textContent = "";
-  // BUG adds to localStorage on btn click
-};
 
-const displayScoreBoard = function () {
-  //
+  teamNameInput.textContent = "";
+  teamNameInput.disabled = true;
+  addTeamBtn.disabled = true;
+
+  const scoresTitle = document.createElement("h3");
+  scoresTitle.textContent = "Check out the scoreboard!";
+  chooseTeamNameContainer.appendChild(scoresTitle);
 };
 
 comicsBtn.addEventListener("click", comicsBtnHandler);
