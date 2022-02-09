@@ -5,6 +5,7 @@ let heroGif = document.querySelector(".hero-gif");
 const extraInfoDiv = document.querySelector(".extra-info");
 const buttonsDiv = document.querySelector(".buttons");
 const comicsBtn = document.querySelector(".comics");
+const moviesBtn = document.querySelector(".movie-appearances");
 // const storiesBtn = document.querySelector(".stories");
 const eventsBtn = document.querySelector(".events");
 let searchInput;
@@ -86,6 +87,7 @@ const getHeroGif = function (searchInput) {
 
 //  function to fetch data for hero additional info: comics, stories, events. data retrieved from Matvel API.
 // dynamically generating elements for display.
+
 const comicsBtnDisplay = function () {
   let comicsUrl =
     "https://gateway.marvel.com/v1/public/characters?name=" +
@@ -156,6 +158,38 @@ const eventsBtnDisplay = function () {
     });
 };
 
+// function for displaying movie search 
+const movieBtnDisplay = function (searchInput) {
+  let movieUrl = "http://www.omdbapi.com/?apikey=6aedd9f1&type=movie&s=" + searchInput;
+  fetch(movieUrl)
+    .then(function(response) {
+      if (response.ok) {
+        response.json().then(function(data) {
+          console.log(data);
+          //console.log(data.Search[5]);
+          let movieTitle = document.createElement("h3");
+          movieTitle.textContent = "Your hero took part in these movies:";
+          const movieUl = document.createElement("ul");
+
+          for (let i = 0; i < 10; i++) {
+            let movieLi = document.createElement("li");
+            movieLi.textContent = `${data.Search[i].Title} (${data.Search[i].Year})`;
+            movieUl.appendChild(movieLi);
+          }
+          buttonsContentDiv.appendChild(movieTitle);
+          buttonsContentDiv.appendChild(movieUl);
+          buttonsDiv.appendChild(buttonsContentDiv);
+          extraInfoDiv.appendChild(buttonsDiv);
+
+
+        });
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
 // function to handle user input for first fetch.
 const InputHandler = function () {
   buttonsContentDiv.innerHTML = "";
@@ -163,6 +197,7 @@ const InputHandler = function () {
 
   if (searchInput) {
     getHeroName(searchInput);
+   // movieBtnDisplay(searchInput);
     formInput.value = "";
   } else {
     // TODO change to pop up/modal later
@@ -170,6 +205,10 @@ const InputHandler = function () {
   }
 };
 
+const movieBtnHandler = function () {
+  buttonsContentDiv.innerHTML = "";
+  movieBtnDisplay(searchInput);
+};
 const comicsBtnHandler = function () {
   buttonsContentDiv.innerHTML = "";
   comicsBtnDisplay();
@@ -236,12 +275,12 @@ const saveTeam = function () {
   console.log("saveTeam clicked");
   // TODO store name+score in an array of key:value objects
   // TODO build objects for each team with total score and team name and store in array
-  // let team = {
-  //   members: [{}],
-  //   teamName: teamNameTitle.textContent,
+   let team = {
+     members: [{}],
+     teamName: teamNameTitle.textContent,
   //   // TODO get score for each superhero from API and sum up team total score
-  //   totalScore: "",
-  // };
+     totalScore: "",
+  };
 
   teams.push(team);
 
@@ -257,6 +296,7 @@ const saveTeam = function () {
 
 comicsBtn.addEventListener("click", comicsBtnHandler);
 eventsBtn.addEventListener("click", eventsBtnHandler);
+moviesBtn.addEventListener("click", movieBtnHandler);
 searchBtn.addEventListener("click", InputHandler);
 addHeroBtn.addEventListener("click", addMember);
 saveTeamBtn.addEventListener("click", saveTeam);
