@@ -17,14 +17,6 @@ let teamMemberInput = document.querySelector(".add-hero");
 const addHeroBtn = document.querySelector(".add-hero-btn");
 const teamDiv = document.createElement("div");
 teamDiv.setAttribute("id", "teamDiv");
-let member;
-let teamNameInput = document.createElement("input");
-let teamNameTitle = document.createElement("h5");
-let teamTitle = document.createElement("h3");
-const saveTeamBtn = document.createElement("button");
-saveTeamBtn.setAttribute("class", "save-team");
-saveTeamBtn.textContent = "Save Team";
-let team;
 let teams = [];
 
 if (localStorage.getItem("teams")) {
@@ -219,84 +211,10 @@ const eventsBtnHandler = function () {
   eventsBtnDisplay();
 };
 
-// dream team game
-const createTeam = function () {
-  // clear teamDiv from previous user
-  teamDiv.innerHTML = "";
-  // append new teamDiv to main din
-  // addMember();
-  // take input for team name
-  // TODO when all 5 team members were added - create object for localStorage
-  // TODO display team on score board
-};
 
-// functionality to add each hero and grab his score from the API
-const addMember = function () {
-  // create elements to display chosen hero
-  if (teamMemberInput) {
-    // for (let i = 0; i < 5; i++) {}
-    member = document.createElement("p");
-    member.textContent = teamMemberInput.value.trim();
-    team.members.push(member);
-    teamDiv.appendChild(member);
-    // clear inpur
-    teamMemberInput.value = "";
-  } else {
-    alert("Please type superhero name");
-  }
-  // BUG P added when input is empty!
-  // disable add button after 5 team members
-  var count = teamDiv.childElementCount;
-  if (count >= 5) {
-    teamMemberInput.disabled = true;
-    addHeroBtn.disabled = true;
-
-    teamNameInput.setAttribute("placeholder", "Your Team Name");
-
-    teamDiv.appendChild(teamNameInput);
-    teamNameTitle.textContent = teamNameInput.value.trim();
-
-    teamDiv.appendChild(teamNameTitle);
-    teamNameInput.textContent = "";
-    teamDiv.appendChild(saveTeamBtn);
-  }
-
-  teamsContainerDiv.appendChild(teamDiv);
-};
-
-team = {
-  members: [{ hero: teamMemberInput, score: "" }],
-  teamName: teamNameTitle.textContent,
-  // TODO get score for each superhero from API and sum up team total score
-  totalScore: "",
-};
-
-const saveTeam = function () {
-  console.log("saveTeam clicked");
-  // TODO store name+score in an array of key:value objects
-  // TODO build objects for each team with total score and team name and store in array
-   let team = {
-     members: [{}],
-     teamName: teamNameTitle.textContent,
-  //   // TODO get score for each superhero from API and sum up team total score
-     totalScore: "",
-  };
-
-  teams.push(team);
-
-  localStorage.setItem("teams", JSON.stringify(teams));
-  console.log(teams);
-  console.log(team);
-
-  // TODO load scoreboard
-
-  // TODO clear input
-  teamNameInput.textContent = "";
-};
 
 comicsBtn.addEventListener("click", comicsBtnHandler);
 eventsBtn.addEventListener("click", eventsBtnHandler);
 moviesBtn.addEventListener("click", movieBtnHandler);
 searchBtn.addEventListener("click", InputHandler);
-addHeroBtn.addEventListener("click", addMember);
-saveTeamBtn.addEventListener("click", saveTeam);
+
