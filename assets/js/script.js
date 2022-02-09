@@ -4,7 +4,7 @@ let formInput = document.querySelector("#book-name");
 const heroNameDisplay = document.querySelector(".hero-name-display");
 let heroGif = document.querySelector(".hero-gif");
 const extraInfoDiv = document.querySelector(".extra-info");
-const buttonsDiv = document.querySelector(".buttons");
+const buttonsDiv = document.querySelector("#buttons");
 const comicsBtn = document.querySelector(".comics");
 const moviesBtn = document.querySelector(".movie-appearances");
 const eventsBtn = document.querySelector(".events");
@@ -28,8 +28,6 @@ let hero;
 
 let teams = [];
 
-const teamsScoreList = document.querySelector(".teams-list");
-
 if (localStorage.getItem("teams")) {
   teams = JSON.parse(localStorage.getItem("teams"));
 }
@@ -52,8 +50,10 @@ const getHeroName = function (searchInput) {
 
           heroNameDisplay.appendChild(heroNameTitle);
           heroNameDisplay.appendChild(heroDescriptionP);
-          heroNameDisplay.setAttribute("class", "visible");
-          buttonsDiv.setAttribute("class", "visible");
+          heroNameDisplay.classList.remove("hidden");
+          heroNameDisplay.classList.add("visible");
+          buttonsDiv.classList.remove("hidden");
+          buttonsDiv.classList.add("visible");
         });
       }
     })
@@ -199,19 +199,21 @@ const InputHandler = function () {
   }
 };
 
-const movieBtnHandler = function () {
-  buttonsContentDiv.innerHTML = "";
-  movieBtnDisplay(searchInput);
-};
+const buttonsHandler = function (e) {
+  let clickedBtn = e.target;
+  if (clickedBtn.textContent == comicsBtn.textContent) {
+    buttonsContentDiv.innerHTML = "";
+    comicsBtnDisplay();
+  }
 
-const comicsBtnHandler = function () {
-  buttonsContentDiv.innerHTML = "";
-  comicsBtnDisplay();
-};
-
-const eventsBtnHandler = function () {
-  buttonsContentDiv.innerHTML = "";
-  eventsBtnDisplay();
+  if (clickedBtn.textContent == eventsBtn.textContent) {
+    buttonsContentDiv.innerHTML = "";
+    eventsBtnDisplay();
+  }
+  if (clickedBtn.textContent == moviesBtn.textContent) {
+    buttonsContentDiv.innerHTML = "";
+    movieBtnDisplay(searchInput);
+  }
 };
 
 const addToSelectedHeroes = function (hero) {
@@ -307,9 +309,7 @@ const saveTeam = function () {
   chooseTeamNameContainer.appendChild(scoresTitle);
 };
 
-comicsBtn.addEventListener("click", comicsBtnHandler);
-eventsBtn.addEventListener("click", eventsBtnHandler);
-moviesBtn.addEventListener("click", movieBtnHandler);
+buttonsDiv.addEventListener("click", buttonsHandler);
 searchBtn.addEventListener("click", InputHandler);
 addHeroBtn.addEventListener("click", addTeamMember);
 addTeamBtn.addEventListener("click", saveTeam);
