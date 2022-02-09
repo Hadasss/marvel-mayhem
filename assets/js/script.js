@@ -152,8 +152,9 @@ const eventsBtnDisplay = function () {
 
 // function for displaying movie search
 const movieBtnDisplay = function (searchInput) {
-  let movieUrl =
-    "https://www.omdbapi.com/?apikey=6aedd9f1&type=movie&s=" + searchInput;
+
+  let movieUrl = "https://www.omdbapi.com/?apikey=6aedd9f1&type=movie&s=" + searchInput;
+
   fetch(movieUrl)
     .then(function (response) {
       if (response.ok) {
