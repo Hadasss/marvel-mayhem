@@ -6,25 +6,26 @@ const extraInfoDiv = document.querySelector(".extra-info");
 const buttonsDiv = document.querySelector(".buttons");
 const comicsBtn = document.querySelector(".comics");
 const moviesBtn = document.querySelector(".movie-appearances");
-// const storiesBtn = document.querySelector(".stories");
+
 const eventsBtn = document.querySelector(".events");
 let searchInput;
 const heroNameTitle = document.createElement("h3");
 const heroDescriptionP = document.createElement("p");
 const buttonsContentDiv = document.createElement("div");
 const teamsContainerDiv = document.querySelector(".teams-container");
-let teamMemberInput = document.querySelector(".add-hero");
+const addHeroInput = document.querySelector(".add-hero");
 const addHeroBtn = document.querySelector(".add-hero-btn");
 const teamDiv = document.createElement("div");
 teamDiv.setAttribute("id", "teamDiv");
-let member;
-let teamNameInput = document.createElement("input");
-let teamNameTitle = document.createElement("h5");
-let teamTitle = document.createElement("h3");
-const saveTeamBtn = document.createElement("button");
-saveTeamBtn.setAttribute("class", "save-team");
-saveTeamBtn.textContent = "Save Team";
-let team;
+
+const selectedHeroesContainer = document.querySelector(".selected-heroes");
+const chooseHeroesContainer = document.querySelector(".choose-heroes");
+const chooseTeamNameContainer = document.querySelector(".choose-team-name");
+const addTeamBtn = document.querySelector(".add-team");
+const teamNameInput = document.querySelector(".teamName");
+const selectedHeroes = [];
+let hero;
+
 let teams = [];
 
 if (localStorage.getItem("teams")) {
@@ -43,7 +44,6 @@ const getHeroName = function (searchInput) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data, searchInput);
           heroNameTitle.textContent = data.data.results[0].name;
           heroDescriptionP.textContent = data.data.results[0].description;
           getHeroGif(searchInput);
@@ -70,11 +70,8 @@ const getHeroGif = function (searchInput) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data, searchInput);
           let gifRandomIndex = Math.floor(Math.random() * 50);
-          console.log(gifRandomIndex);
           let gifSrc = data.data[gifRandomIndex].images.original.url;
-          console.log(gifSrc);
           heroGif.setAttribute("src", gifSrc);
           heroGif.setAttribute("class", "visible");
         });
@@ -86,8 +83,6 @@ const getHeroGif = function (searchInput) {
 };
 
 //  function to fetch data for hero additional info: comics, stories, events. data retrieved from Matvel API.
-// dynamically generating elements for display.
-
 const comicsBtnDisplay = function () {
   let comicsUrl =
     "https://gateway.marvel.com/v1/public/characters?name=" +
@@ -98,7 +93,6 @@ const comicsBtnDisplay = function () {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data, searchInput);
           let comicsTitle = document.createElement("h3");
           comicsTitle.textContent = "Your hero appeared in these issues:";
           const comicsUl = document.createElement("ul");
@@ -133,7 +127,6 @@ const eventsBtnDisplay = function () {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data);
           let eventsTitle = document.createElement("h3");
           eventsTitle.textContent = "Your hero took part in these events:";
           const eventsUl = document.createElement("ul");
@@ -158,13 +151,14 @@ const eventsBtnDisplay = function () {
     });
 };
 
-// function for displaying movie search 
+// function for displaying movie search
 const movieBtnDisplay = function (searchInput) {
-  let movieUrl = "http://www.omdbapi.com/?apikey=6aedd9f1&type=movie&s=" + searchInput;
+  let movieUrl =
+    "http://www.omdbapi.com/?apikey=6aedd9f1&type=movie&s=" + searchInput;
   fetch(movieUrl)
-    .then(function(response) {
+    .then(function (response) {
       if (response.ok) {
-        response.json().then(function(data) {
+        response.json().then(function (data) {
           console.log(data);
           //console.log(data.Search[5]);
           let movieTitle = document.createElement("h3");
@@ -180,8 +174,6 @@ const movieBtnDisplay = function (searchInput) {
           buttonsContentDiv.appendChild(movieUl);
           buttonsDiv.appendChild(buttonsContentDiv);
           extraInfoDiv.appendChild(buttonsDiv);
-
-
         });
       }
     })
@@ -197,7 +189,7 @@ const InputHandler = function () {
 
   if (searchInput) {
     getHeroName(searchInput);
-   // movieBtnDisplay(searchInput);
+    // movieBtnDisplay(searchInput);
     formInput.value = "";
   } else {
     // TODO change to pop up/modal later
@@ -219,84 +211,103 @@ const eventsBtnHandler = function () {
   eventsBtnDisplay();
 };
 
-// dream team game
-const createTeam = function () {
-  // clear teamDiv from previous user
-  teamDiv.innerHTML = "";
-  // append new teamDiv to main din
-  // addMember();
-  // take input for team name
-  // TODO when all 5 team members were added - create object for localStorage
-  // TODO display team on score board
+const addToSelectedHeroes = function (hero) {
+  if (selectedHeroes.length >= 5) {
+    return;
+  }
+  selectedHeroes.push(hero);
 };
 
-// functionality to add each hero and grab his score from the API
-const addMember = function () {
-  // create elements to display chosen hero
-  if (teamMemberInput) {
-    // for (let i = 0; i < 5; i++) {}
-    member = document.createElement("p");
-    member.textContent = teamMemberInput.value.trim();
-    team.members.push(member);
-    teamDiv.appendChild(member);
-    // clear inpur
-    teamMemberInput.value = "";
-  } else {
-    alert("Please type superhero name");
-  }
-  // BUG P added when input is empty!
-  // disable add button after 5 team members
-  var count = teamDiv.childElementCount;
-  if (count >= 5) {
-    teamMemberInput.disabled = true;
-    addHeroBtn.disabled = true;
-
-    teamNameInput.setAttribute("placeholder", "Your Team Name");
-
-    teamDiv.appendChild(teamNameInput);
-    teamNameTitle.textContent = teamNameInput.value.trim();
-
-    teamDiv.appendChild(teamNameTitle);
-    teamNameInput.textContent = "";
-    teamDiv.appendChild(saveTeamBtn);
+const addTeamMember = function () {
+  // generate p element and assign it the input.value and push to array
+  if (!addHeroInput.value) {
+    alert("type something");
+    return;
   }
 
-  teamsContainerDiv.appendChild(teamDiv);
+  getHeroScore(addHeroInput.value).then(function (hero) {
+    if (!hero) {
+      alert("No hero");
+      return;
+    }
+
+    addToSelectedHeroes(hero);
+    addHeroInput.value = "";
+
+    renderSelectedHeroes();
+
+    if (selectedHeroes.length == 5) {
+      displayChooseTeam();
+    }
+  });
 };
 
-team = {
-  members: [{ hero: teamMemberInput, score: "" }],
-  teamName: teamNameTitle.textContent,
-  // TODO get score for each superhero from API and sum up team total score
-  totalScore: "",
+const renderSelectedHeroes = function () {
+  selectedHeroesContainer.innerHTML = "";
+  for (const hero of selectedHeroes) {
+    const heroNameLi = document.createElement("li");
+    heroNameLi.textContent = hero.name;
+    selectedHeroesContainer.appendChild(heroNameLi);
+  }
+};
+
+const displayChooseTeam = function () {
+  // when we have 5 members disable input + add title, input, btn to add team
+  chooseHeroesContainer.classList.add("hidden");
+  chooseTeamNameContainer.classList.remove("hidden");
+};
+
+const getHeroScore = function (heroName) {
+  let url =
+    "https://gateway.marvel.com/v1/public/characters?name=" +
+    heroName +
+    "&apikey=3bc97c9b0187fdee4f75f60b267b51ad";
+
+  return fetch(url)
+    .then(function (response) {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then(function (results) {
+      const hero = results.data.results[0];
+      if (!hero) {
+        return null;
+      }
+
+      return { name: hero.name, score: hero.comics.available };
+    });
 };
 
 const saveTeam = function () {
-  console.log("saveTeam clicked");
-  // TODO store name+score in an array of key:value objects
-  // TODO build objects for each team with total score and team name and store in array
-   let team = {
-     members: [{}],
-     teamName: teamNameTitle.textContent,
-  //   // TODO get score for each superhero from API and sum up team total score
-     totalScore: "",
+  // create object for team for localStorage
+  const addScores = function () {
+    let sum = 0;
+    for (let i = 0; i < selectedHeroes.length; i++) {
+      sum += selectedHeroes[i].score;
+    }
+    return sum;
+  };
+  var team = {
+    members: selectedHeroes,
+    teamName: teamNameInput.value,
+    totalScore: addScores(),
   };
 
   teams.push(team);
 
   localStorage.setItem("teams", JSON.stringify(teams));
   console.log(teams);
-  console.log(team);
-
-  // TODO load scoreboard
-
-  // TODO clear input
   teamNameInput.textContent = "";
+};
+
+const displayScoreBoard = function () {
+  //
 };
 
 comicsBtn.addEventListener("click", comicsBtnHandler);
 eventsBtn.addEventListener("click", eventsBtnHandler);
 moviesBtn.addEventListener("click", movieBtnHandler);
 searchBtn.addEventListener("click", InputHandler);
-addHeroBtn.addEventListener("click", addMember);
-saveTeamBtn.addEventListener("click", saveTeam);
+addHeroBtn.addEventListener("click", addTeamMember);
+addTeamBtn.addEventListener("click", saveTeam);
