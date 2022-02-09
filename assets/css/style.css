@@ -9,13 +9,13 @@
 body {
   font-family: "Bangers", sans-serif;
 }
-
+/* 
 header {
 width: 100%;
 background-image:url("./images/marvel.jpg");
 border: 3px;
 padding-top: 5px;
-}
+} */
 
 header h1 {
   font-size: 100px;
