@@ -314,9 +314,7 @@ const displayScoreBoard = function () {
   //
 };
 
-comicsBtn.addEventListener("click", comicsBtnHandler);
-eventsBtn.addEventListener("click", eventsBtnHandler);
-moviesBtn.addEventListener("click", movieBtnHandler);
+buttonsDiv.addEventListener("click", buttonsHandler);
 searchBtn.addEventListener("click", InputHandler);
 addHeroBtn.addEventListener("click", addTeamMember);
 addTeamBtn.addEventListener("click", saveTeam);
