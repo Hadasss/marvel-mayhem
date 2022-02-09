@@ -298,6 +298,7 @@ const saveTeam = function () {
   localStorage.setItem("teams", JSON.stringify(teams));
   console.log(teams);
   teamNameInput.textContent = "";
+  // BUG adds to localStorage on btn click
 };
 
 const displayScoreBoard = function () {
