@@ -41,7 +41,6 @@ const getHeroName = function (searchInput) {
 					heroNameDisplay.classList.add("class", "visible");
 					buttonsDiv.setAttribute("class", "visible");
 					heroDescriptionP.classList.add("class", "visible");
-				//heroNameDisplay.classList.add("hero-name-display")
 				});
 			}
 		})
