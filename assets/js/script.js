@@ -6,14 +6,12 @@ const extraInfoDiv = document.querySelector(".extra-info");
 const buttonsDiv = document.querySelector(".buttons");
 const comicsBtn = document.querySelector(".comics");
 const moviesBtn = document.querySelector(".movie-appearances");
-// const storiesBtn = document.querySelector(".stories");
 const eventsBtn = document.querySelector(".events");
 let searchInput;
 const heroNameTitle = document.createElement("h3");
 const heroDescriptionP = document.createElement("p");
 const buttonsContentDiv = document.createElement("div");
 const teamsContainerDiv = document.querySelector(".teams-container");
-let teamMemberInput = document.querySelector(".add-hero");
 const addHeroBtn = document.querySelector(".add-hero-btn");
 const teamDiv = document.createElement("div");
 teamDiv.setAttribute("id", "teamDiv");
@@ -211,10 +209,106 @@ const eventsBtnHandler = function () {
   eventsBtnDisplay();
 };
 
+const addToSelectedHeroes = function (hero) {
+  if (selectedHeroes.length >= 5) {
+    return;
+  }
+  selectedHeroes.push(hero);
+};
+
+const addTeamMember = function () {
+  // generate p element and assign it the input.value and push to array
+  if (!addHeroInput.value) {
+    alert("type something");
+    return;
+  }
+
+  getHeroScore(addHeroInput.value).then(function (hero) {
+    if (!hero) {
+      alert("No hero");
+      return;
+    }
+
+    addToSelectedHeroes(hero);
+    addHeroInput.value = "";
+
+    renderSelectedHeroes();
+
+    if (selectedHeroes.length == 5) {
+      displayChooseTeam();
+    }
+  });
+};
+
+const renderSelectedHeroes = function () {
+  selectedHeroesContainer.innerHTML = "";
+  for (const hero of selectedHeroes) {
+    const heroNameLi = document.createElement("li");
+    heroNameLi.textContent = hero.name;
+    selectedHeroesContainer.appendChild(heroNameLi);
+  }
+};
+
+const displayChooseTeam = function () {
+  // when we have 5 members disable input + add title, input, btn to add team
+  chooseHeroesContainer.classList.add("hidden");
+  chooseTeamNameContainer.classList.remove("hidden");
+};
+
+const getHeroScore = function (heroName) {
+  let url =
+    "https://gateway.marvel.com/v1/public/characters?name=" +
+    heroName +
+    "&apikey=3bc97c9b0187fdee4f75f60b267b51ad";
+
+  return fetch(url)
+    .then(function (response) {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then(function (results) {
+      const hero = results.data.results[0];
+      if (!hero) {
+        return null;
+      }
+
+      return { name: hero.name, score: hero.comics.available };
+    });
+};
+
+const saveTeam = function () {
+  // create object for team for localStorage
+  const addScores = function () {
+    let sum = 0;
+    for (let i = 0; i < selectedHeroes.length; i++) {
+      sum += selectedHeroes[i].score;
+    }
+    return sum;
+  };
+  var team = {
+    members: selectedHeroes,
+    teamName: teamNameInput.value,
+    totalScore: addScores(),
+  };
+
+  teams.push(team);
+
+  localStorage.setItem("teams", JSON.stringify(teams));
+  console.log(teams);
+  teamNameInput.textContent = "";
+};
+
+const displayScoreBoard = function () {
+  //
+};
+
 
 
 comicsBtn.addEventListener("click", comicsBtnHandler);
 eventsBtn.addEventListener("click", eventsBtnHandler);
 moviesBtn.addEventListener("click", movieBtnHandler);
 searchBtn.addEventListener("click", InputHandler);
+addHeroBtn.addEventListener("click", addTeamMember);
+addTeamBtn.addEventListener("click", saveTeam);
 
