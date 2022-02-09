@@ -21,7 +21,7 @@ const chooseHeroesContainer = document.querySelector(".choose-heroes");
 const chooseTeamNameContainer = document.querySelector(".choose-team-name");
 const addTeamBtn = document.querySelector(".add-team");
 const teamNameInput = document.querySelector(".teamName");
-const teamNameN = teamNameInput.value;
+// const teamNameN = teamNameInput.value;
 const selectedHeroes = [];
 let hero;
 
