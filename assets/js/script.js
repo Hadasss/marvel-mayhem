@@ -6,7 +6,6 @@ const extraInfoDiv = document.querySelector(".extra-info");
 const buttonsDiv = document.querySelector(".buttons");
 const comicsBtn = document.querySelector(".comics");
 const moviesBtn = document.querySelector(".movie-appearances");
-
 const eventsBtn = document.querySelector(".events");
 let searchInput;
 const heroNameTitle = document.createElement("h3");
@@ -154,7 +153,7 @@ const eventsBtnDisplay = function () {
 // function for displaying movie search
 const movieBtnDisplay = function (searchInput) {
   let movieUrl =
-    "http://www.omdbapi.com/?apikey=6aedd9f1&type=movie&s=" + searchInput;
+    "https://www.omdbapi.com/?apikey=6aedd9f1&type=movie&s=" + searchInput;
   fetch(movieUrl)
     .then(function (response) {
       if (response.ok) {
