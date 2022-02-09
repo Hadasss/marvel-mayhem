@@ -87,11 +87,22 @@
     <div class="teams-container">
       <div class="build-team">
         <h2 class="build-title">Build your super dream team!</h2>
-        <p>Write the names of 5 heroes you want on your team.</p>
-        <input type="text" placeholder="add Superhero!" class="add-hero" />
-        <button class="add-hero-btn">ADD</button>
+        <div class="choose-heroes">
+          <p>Write the names of 5 heroes you want on your team.</p>
+          <input type="text" placeholder="add Superhero!" class="add-hero" />
+          <button class="add-hero-btn">ADD</button>
+        </div>
+
+        <ul class="selected-heroes"></ul>
+
+        <div class="choose-team-name hidden">
+          <h3>Choose a name for your team</h3>
+          <input class="teamName" type="text" />
+          <button class="add-team">Add Team</button>
+        </div>
       </div>
     </div>
+
 
     <script src="assets/js/script.js"></script>
   </body>
