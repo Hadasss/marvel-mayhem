@@ -30,6 +30,9 @@
     <section
       class="flex justify-center border-4 border-black bg-gradient-to-r from-blue-800 to-yellow-500 m-2 p-9 shadow-2xl"
     >
+      <button class="score-board">
+        <a href="./scores.html">Score Board</a>
+      </button>
       <form class="p-2">
         <!--input for book/movie title-->
         <label for="book-input"></label>
@@ -59,7 +62,7 @@
       class="extra-info flex-wrap border-4 border-black bg-gradient-to-r from-blue-500 to-orange-500 m-2 p-10"
     >
       <!-- FYI class name "buttons hidden" -->
-      <div class="flex-wrap buttons hidden">
+      <div class="flex-wrap buttons hidden" id="buttons">
         <button
           type="button"
           class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 comics border-dashed border-4 border-amber-300"
@@ -102,7 +105,6 @@
         </div>
       </div>
     </div>
-
 
     <script src="assets/js/script.js"></script>
   </body>
