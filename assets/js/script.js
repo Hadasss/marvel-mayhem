@@ -42,7 +42,6 @@ const getHeroName = function (searchInput) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data, searchInput);
           heroNameTitle.textContent = data.data.results[0].name;
           heroDescriptionP.textContent = data.data.results[0].description;
           getHeroGif(searchInput);
@@ -69,7 +68,6 @@ const getHeroGif = function (searchInput) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data, searchInput);
           let gifRandomIndex = Math.floor(Math.random() * 50);
           let gifSrc = data.data[gifRandomIndex].images.original.url;
           heroGif.setAttribute("src", gifSrc);
@@ -93,7 +91,6 @@ const comicsBtnDisplay = function () {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data, searchInput);
           let comicsTitle = document.createElement("h3");
           comicsTitle.textContent = "Your hero appeared in these issues:";
           const comicsUl = document.createElement("ul");
@@ -128,7 +125,6 @@ const eventsBtnDisplay = function () {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data);
           let eventsTitle = document.createElement("h3");
           eventsTitle.textContent = "Your hero took part in these events:";
           const eventsUl = document.createElement("ul");
@@ -213,7 +209,6 @@ const renderSelectedHeroes = function () {
   for (const hero of selectedHeroes) {
     const heroNameLi = document.createElement("li");
     heroNameLi.textContent = hero.name;
-
     selectedHeroesContainer.appendChild(heroNameLi);
   }
 };
@@ -260,13 +255,11 @@ const saveTeam = function () {
     teamName: teamNameInput.value,
     totalScore: addScores(),
   };
-  console.log(team);
 
   teams.push(team);
 
   localStorage.setItem("teams", JSON.stringify(teams));
   console.log(teams);
-  console.log(team);
   teamNameInput.textContent = "";
 };
 
