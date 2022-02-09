@@ -21,13 +21,10 @@ const chooseHeroesContainer = document.querySelector(".choose-heroes");
 const chooseTeamNameContainer = document.querySelector(".choose-team-name");
 const addTeamBtn = document.querySelector(".add-team");
 const teamNameInput = document.querySelector(".teamName");
-// const teamNameN = teamNameInput.value;
 const selectedHeroes = [];
 let hero;
 
 let teams = [];
-
-// let team;
 
 if (localStorage.getItem("teams")) {
   teams = JSON.parse(localStorage.getItem("teams"));
@@ -179,53 +176,6 @@ const eventsBtnHandler = function () {
   buttonsContentDiv.innerHTML = "";
   eventsBtnDisplay();
 };
-
-// dream team game
-// const createTeam = function () {
-//   teamDiv.innerHTML = "";
-// };
-
-// functionality to add each hero and grab his score from the API
-// const addMember = function () {
-//   // create elements to display chosen hero
-//   if (teamMemberInput) {
-//     // for (let i = 0; i < 5; i++) {}
-//     member = document.createElement("p");
-//     member.setAttribute("class", "member");
-//     member.textContent = teamMemberInput.value.trim();
-//     team.members.push(member);
-//     teamDiv.appendChild(member);
-
-//     teamMemberInput.value = "";
-
-//     for (let i = 0; i < team.members.length; i++) {
-//       team.member[i].textContent = member[i].value;
-//       console.log(team.member);
-//       console.log(member);
-//     }
-//   } else {
-//     alert("Please type superhero name");
-//     // BUG P added when input is empty!
-//   }
-
-// disable add button after 5 team members
-//   var count = teamDiv.childElementCount;
-//   if (count >= 5) {
-//     teamMemberInput.disabled = true;
-//     addHeroBtn.disabled = true;
-
-//     teamNameInput.setAttribute("placeholder", "Your Team Name");
-
-//     teamDiv.appendChild(teamNameInput);
-//     teamNameTitle.textContent = teamNameInput.value.trim();
-
-//     teamDiv.appendChild(teamNameTitle);
-//     teamNameInput.textContent = "";
-//     teamDiv.appendChild(saveTeamBtn);
-//   }
-
-//   teamsContainerDiv.appendChild(teamDiv);
-// };
 
 const addToSelectedHeroes = function (hero) {
   if (selectedHeroes.length >= 5) {
