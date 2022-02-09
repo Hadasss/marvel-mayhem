@@ -12,9 +12,19 @@ const heroNameTitle = document.createElement("h3");
 const heroDescriptionP = document.createElement("p");
 const buttonsContentDiv = document.createElement("div");
 const teamsContainerDiv = document.querySelector(".teams-container");
+const addHeroInput = document.querySelector(".add-hero");
 const addHeroBtn = document.querySelector(".add-hero-btn");
 const teamDiv = document.createElement("div");
 teamDiv.setAttribute("id", "teamDiv");
+
+const selectedHeroesContainer = document.querySelector(".selected-heroes");
+const chooseHeroesContainer = document.querySelector(".choose-heroes");
+const chooseTeamNameContainer = document.querySelector(".choose-team-name");
+const addTeamBtn = document.querySelector(".add-team");
+const teamNameInput = document.querySelector(".teamName");
+const selectedHeroes = [];
+let hero;
+
 let teams = [];
 
 if (localStorage.getItem("teams")) {
