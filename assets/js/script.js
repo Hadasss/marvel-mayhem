@@ -155,8 +155,8 @@ const eventsBtnDisplay = function () {
 
 // function for displaying movie search
 const movieBtnDisplay = function (searchInput) {
-
-  let movieUrl = "https://www.omdbapi.com/?apikey=6aedd9f1&type=movie&s=" + searchInput;
+  let movieUrl =
+    "https://www.omdbapi.com/?apikey=6aedd9f1&type=movie&s=" + searchInput;
 
   fetch(movieUrl)
     .then(function (response) {
@@ -285,6 +285,7 @@ const getHeroScore = function (heroName) {
 };
 
 const saveTeam = function () {
+  // create object for team for localStorage
   const addScores = function () {
     let sum = 0;
     for (let i = 0; i < selectedHeroes.length; i++) {
@@ -292,7 +293,6 @@ const saveTeam = function () {
     }
     return sum;
   };
-  // create object for team for localStorage
   var team = {
     members: selectedHeroes,
     teamName: teamNameInput.value,
@@ -300,7 +300,7 @@ const saveTeam = function () {
   };
   teams.push(team);
   localStorage.setItem("teams", JSON.stringify(teams));
-
+  console.log(teams);
   teamNameInput.textContent = "";
   teamNameInput.disabled = true;
   addTeamBtn.disabled = true;
@@ -310,7 +310,13 @@ const saveTeam = function () {
   chooseTeamNameContainer.appendChild(scoresTitle);
 };
 
-buttonsDiv.addEventListener("click", buttonsHandler);
+const displayScoreBoard = function () {
+  //
+};
+
+comicsBtn.addEventListener("click", comicsBtnHandler);
+eventsBtn.addEventListener("click", eventsBtnHandler);
+moviesBtn.addEventListener("click", movieBtnHandler);
 searchBtn.addEventListener("click", InputHandler);
 addHeroBtn.addEventListener("click", addTeamMember);
 addTeamBtn.addEventListener("click", saveTeam);
