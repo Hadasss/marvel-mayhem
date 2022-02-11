@@ -24,9 +24,12 @@ const displayScoreBoard = function () {
   console.log(sortedArr);
   for (let i = 0; i < sortedArr.length; i++) {
     const teamScoreLi = document.createElement("li");
+    teamScoreLi.classList.add("team-name");
     let scoreSpan = document.createElement("span");
-
-    teamScoreLi.textContent = `${sortedArr[i].teamName} ${sortedArr[i].totalScore}`;
+    scoreSpan.classList.add("tag");
+    scoreSpan.classList.add("is-black");
+    scoreSpan.textContent = sortedArr[i].totalScore;
+    teamScoreLi.textContent = sortedArr[i].teamName;
 
     teamScoreLi.appendChild(scoreSpan);
 

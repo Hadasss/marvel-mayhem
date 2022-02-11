@@ -1,117 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" href="./assets/images/icons8-boom-48.png" />
-		<link rel="stylesheet" href="./assets/css/style.css" />
-		<script src="https://cdn.tailwindcss.com"></script>
-		<title>Hero Hub</title>
-		<link
-			rel="shortcut icon"
-			type="image/jpg"
-			href="assets/images/favicon.ico"
-		/>
-		<link
-			href="https://fonts.googleapis.com/css?family=Bangers:regular"
-			rel="stylesheet"
-		/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/images/icons8-boom-48.png" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Hero Hub</title>
+    <link
+      rel="shortcut icon"
+      type="image/jpg"
+      href="assets/images/favicon.ico"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Bangers:regular"
+      rel="stylesheet"
+    />
     <a href="https://www.vecteezy.com/free-vector/comic"></a>
-		<style>
-			body {
-				font-family: "Bangers", sans-serif;
-			}
-		</style>
-	</head>
+    <style>
+      body {
+        font-family: "Bangers", sans-serif;
+      }
+    </style>
+  </head>
 
-	<body class="bg-stone-50">
-		
-    <header class="flex justify-center underline text-8xl p-10 border-4 border-black m-2 bg-scroll bg-cover bg-bottom-left text-red-600" style="background-image: url(./assets/images/header-img);">Marvel Mayhem</header>
-    
+  <body class="bg-stone-50">
+    <header
+      class="flex justify-center underline text-8xl p-10 border-4 border-black m-2 bg-scroll bg-cover bg-bottom-left text-red-600"
+      style="background-image: url(./assets/images/header-img)"
+    >
+      Marvel Mayhem
+    </header>
+
     <!--Hero search-bar-->
-		
 
-		<section
-			class="flex justify-center border-4 border-black m-2 p-9 shadow-2xl bg-fit bg-center"
-      style="background-image: url(./assets/images/comis-background-1.jpg);"
-		>
-			<button class="score-board bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-2xl p-1 shadow-2xl">
-				<a href="./scores.html">Score Board</a>
-			</button>
-			<form class="p-2">
-				<!--input for book/movie title-->
-				<label for="book-input"></label>
-				<input
-					type="text"
-					id="book-name"
-					placeholder="Search for Superhero!"
-					class="hero-search-input"
-				/>
-			</form>
+    <section
+      class="flex justify-center border-4 border-black m-2 p-9 shadow-2xl bg-fit bg-center"
+      style="background-image: url(./assets/images/comis-background-1.jpg)"
+    >
+      <button
+        class="score-board bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-2xl p-1 shadow-2xl"
+      >
+        <a href="./scores.html">Score Board</a>
+      </button>
+      <form class="p-2">
+        <!--input for book/movie title-->
+        <label for="book-input"></label>
+        <input
+          type="text"
+          id="book-name"
+          placeholder="Search for Superhero!"
+          class="hero-search-input"
+        />
+      </form>
 
-			<button
-				type="button"
-				class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-2xl p-1 shadow-2xl search-bttn"
-			>
-				Search
-			</button>
-		</section>
+      <button
+        type="button"
+        class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-2xl p-1 shadow-2xl search-bttn"
+      >
+        Search
+      </button>
+    </section>
 
-		<div
-			class="hero-name-display hidden flex-wrap border-4 border-black text-red-600 m-2 p-10" style="background-image: url(./assets/images/comis-background-1.jpg);"
-		>
-			<img class="hero-gif" src="#" />
-		</div>
+    <div
+      class="hero-name-display hidden flex-wrap border-4 border-black text-red-600 m-2 p-10"
+      style="background-image: url(./assets/images/comis-background-1.jpg)"
+    >
+      <img class="hero-gif" src="#" />
+    </div>
 
-		<section
-			class="extra-info flex-wrap border-4 border-black bg-local bg-bottom-right m-2 p-10 text-red-600" style="background-image: url(./assets/images/comics-background-2.jpg);"
-		>
-			<!-- FYI class name "buttons hidden" -->
-			<div class="flex-wrap buttons hidden" id="buttons">
-				<button
-					type="button"
-					class="hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 comics border-solid border-4 border-amber-300"
-				>
-					COMICS
-				</button>
+    <section
+      class="extra-info flex-wrap border-4 border-black bg-local bg-bottom-right m-2 p-10 text-red-600"
+      style="background-image: url(./assets/images/comics-background-2.jpg)"
+    >
+      <!-- FYI class name "buttons hidden" -->
+      <div class="flex-wrap buttons hidden" id="buttons">
+        <button
+          type="button"
+          class="hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 comics border-solid border-4 border-amber-300"
+        >
+          COMICS
+        </button>
 
-				<button
-					type="button"
-					class=" hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 events border-solid border-4 border-amber-300"
-				>
-					EVENTS
-				</button>
-				<button
-					type="button"
-					class="hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 movie-appearances border-solid border-4 border-amber-300"
-				>
-					MOVIES
-				</button>
-			</div>
-		</section>
+        <button
+          type="button"
+          class="hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 events border-solid border-4 border-amber-300"
+        >
+          EVENTS
+        </button>
+        <button
+          type="button"
+          class="hover:bg-blue-800 rounded-md text-purple text-3xl shadow-2xl p-5 m-3 movie-appearances border-solid border-4 border-amber-300"
+        >
+          MOVIES
+        </button>
+      </div>
+    </section>
 
-		<article class="movie-list"></article>
+    <article class="movie-list"></article>
 
-		<div class="teams-container">
-			<div class="build-team flex justify-center m-5">
-				<h2 class="build-title pr-7">Build your super dream team!</h2>
-				<div class="choose-heroes">
-					<p>Write the names of 5 heroes you want on your team.</p>
-					<input type="text" placeholder="add Superhero!" class="add-hero" />
-					<button class="add-hero-btn">ADD</button>
-				</div>
+    <div class="teams-container">
+      <div class="build-team flex justify-center m-5">
+        <h2 class="build-title pr-7">Build your super dream team!</h2>
+        <div class="choose-heroes">
+          <p>Write the names of 5 heroes you want on your team.</p>
+          <input type="text" placeholder="add Superhero!" class="add-hero" />
+          <button class="add-hero-btn">ADD</button>
+        </div>
 
-				<ul class="selected-heroes"></ul>
+        <ul class="selected-heroes"></ul>
 
-				<div class="choose-team-name hidden">
-					<h3>Choose a name for your team</h3>
-					<input class="teamName" type="text" />
-					<button class="add-team">Add Team</button>
-				</div>
-			</div>
-		</div>
+        <div class="choose-team-name hidden">
+          <h3>Choose a name for your team</h3>
+          <input class="teamName" type="text" />
+          <button class="add-team">Add Team</button>
+        </div>
+      </div>
+    </div>
 
-		<script src="assets/js/script.js"></script>
-	</body>
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>
