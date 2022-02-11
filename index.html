@@ -33,8 +33,6 @@
       Marvel Mayhem
     </header>
 
-    <!--Hero search-bar-->
-
     <section
       class="flex justify-center border-4 border-black m-2 p-9 shadow-2xl bg-fit bg-center"
       style="background-image: url(./assets/images/comis-background-1.jpg)"
@@ -45,7 +43,6 @@
         <a href="./scores.html">Score Board</a>
       </button>
       <form class="p-2">
-        <!--input for book/movie title-->
         <label for="book-input"></label>
         <input
           type="text"
@@ -74,7 +71,6 @@
       class="extra-info flex-wrap border-4 border-black bg-local bg-bottom-right m-2 p-10 text-red-600"
       style="background-image: url(./assets/images/comics-background-2.jpg)"
     >
-      <!-- FYI class name "buttons hidden" -->
       <div class="flex-wrap buttons hidden" id="buttons">
         <button
           type="button"
@@ -98,9 +94,10 @@
       </div>
     </section>
 
-    <article class="movie-list"></article>
-
-    <div class="teams-container">
+    <div
+      class="teams-container"
+      style="background-image: url(./assets/images/back.jpg)"
+    >
       <div class="build-team flex justify-center m-5">
         <h2 class="build-title pr-7">Build your super dream team!</h2>
         <div class="choose-heroes">
@@ -112,8 +109,8 @@
         <ul class="selected-heroes"></ul>
 
         <div class="choose-team-name hidden">
-          <h3>Choose a name for your team</h3>
-          <input class="teamName" type="text" />
+          <h3 class="team-name-title">Choose a name for your team</h3>
+          <input class="teamName" type="text" placeholder="Team Name Here" />
           <button class="add-team">Add Team</button>
         </div>
       </div>

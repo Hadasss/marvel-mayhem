@@ -23,6 +23,7 @@ const chooseHeroesContainer = document.querySelector(".choose-heroes");
 const chooseTeamNameContainer = document.querySelector(".choose-team-name");
 const addTeamBtn = document.querySelector(".add-team");
 const teamNameInput = document.querySelector(".teamName");
+const teamNameTitle = document.querySelector(".team-name-title");
 const selectedHeroes = [];
 let hero;
 
@@ -96,12 +97,14 @@ const comicsBtnDisplay = function () {
       if (response.ok) {
         response.json().then(function (data) {
           let comicsTitle = document.createElement("h3");
+          comicsTitle.classList.add("button-title");
           comicsTitle.textContent = "Your hero appeared in these issues:";
           const comicsUl = document.createElement("ul");
 
           for (let i = 0; i < 10; i++) {
             const randomIndex = Math.floor(Math.random() * 20);
             let comicBookLi = document.createElement("li");
+            comicBookLi.classList.add("comics-li");
             comicBookLi.textContent =
               data.data.results[0].comics.items[randomIndex].name;
             comicsUl.appendChild(comicBookLi);
@@ -130,12 +133,14 @@ const eventsBtnDisplay = function () {
       if (response.ok) {
         response.json().then(function (data) {
           let eventsTitle = document.createElement("h3");
+          eventsTitle.classList.add("button-title");
           eventsTitle.textContent = "Your hero took part in these events:";
           const eventsUl = document.createElement("ul");
 
           for (let i = 0; i < 10; i++) {
             let randomIndex = Math.floor(Math.random() * 20);
             let eventsLi = document.createElement("li");
+            eventsLi.classList.add("events-li");
             eventsLi.textContent =
               data.data.results[0].events.items[randomIndex].name;
             eventsUl.appendChild(eventsLi);
@@ -165,11 +170,13 @@ const movieBtnDisplay = function (searchInput) {
           console.log(data);
           //console.log(data.Search[5]);
           let movieTitle = document.createElement("h3");
+          movieTitle.classList.add("button-title");
           movieTitle.textContent = "Your hero took part in these movies:";
           const movieUl = document.createElement("ul");
 
           for (let i = 0; i < 10; i++) {
             let movieLi = document.createElement("li");
+            movieLi.classList.add("movies-li");
             movieLi.textContent = `${data.Search[i].Title} (${data.Search[i].Year})`;
             movieUl.appendChild(movieLi);
           }
@@ -301,17 +308,10 @@ const saveTeam = function () {
   teams.push(team);
   localStorage.setItem("teams", JSON.stringify(teams));
   console.log(teams);
-  teamNameInput.textContent = "";
-  teamNameInput.disabled = true;
-  addTeamBtn.disabled = true;
 
-  const scoresTitle = document.createElement("h3");
-  scoresTitle.textContent = "Check out the scoreboard!";
-  chooseTeamNameContainer.appendChild(scoresTitle);
-};
-
-const displayScoreBoard = function () {
-  //
+  teamNameInput.classList.add("hidden");
+  addTeamBtn.classList.add("hidden");
+  teamNameTitle.textContent = "Check out the scoreboard!";
 };
 
 buttonsDiv.addEventListener("click", buttonsHandler);
