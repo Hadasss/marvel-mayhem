@@ -51,10 +51,61 @@
           class="hero-search-input"
         />
       </form>
+      <!-- here -->
+      <div
+        class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
+        id="empty-search"
+      >
+        <div
+          class="relative top-80 mx-auto border w-80 shadow-lg rounded-md bg-white"
+        >
+          <div class="mt-3 text-center">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Error!</h3>
+            <div class="px-7">
+              <p class="text-sm text-gray-500">Please type a superhero name!</p>
+            </div>
+            <div class="items-center px-4 py-3">
+              <button
+                id="ok-btn"
+                class="px-4 py-2 bg-yellow-300 text-black text-base font-medium rounded-md w-full shadow-sm hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
+        id="no-hero"
+      >
+        <div
+          class="relative top-80 mx-auto border w-80 shadow-lg rounded-md bg-white"
+        >
+          <div class="mt-3 text-center">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Error!</h3>
+            <div class="px-7">
+              <p class="text-sm text-gray-500">No Marvel hero by that name!</p>
+            </div>
+            <div class="items-center px-4 py-3">
+              <button
+                id="ok-hero-btn"
+                class="px-4 py-2 bg-yellow-300 text-black text-base font-medium rounded-md w-full shadow-sm hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- here -->
 
       <button
         type="button"
         class="bg-stone-50 hover:bg-blue-800 rounded-md text-purple text-2xl p-1 shadow-2xl search-bttn"
+        id="search-btn"
       >
         Search
       </button>
@@ -98,6 +149,33 @@
       class="teams-container"
       style="background-image: url(./assets/images/back.jpg)"
     >
+      <!-- here -->
+      <div
+        class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
+        id="empty-member"
+      >
+        <div
+          class="relative top-80 mx-auto border w-80 shadow-lg rounded-md bg-white"
+        >
+          <div class="mt-3 text-center">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Error!</h3>
+            <div class="px-7">
+              <p class="text-sm text-gray-500">Type a team member name!</p>
+            </div>
+            <div class="items-center px-4 py-3">
+              <button
+                id="ok-member-btn"
+                class="px-4 py-2 bg-yellow-300 text-black text-base font-medium rounded-md w-full shadow-sm hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- here -->
+
       <div class="build-team flex justify-center m-5">
         <h2 class="build-title pr-7">Build your super dream team!</h2>
         <div class="choose-heroes">

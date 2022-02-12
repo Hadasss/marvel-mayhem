@@ -1,5 +1,9 @@
 const scoreboardBtn = document.querySelector(".score-board");
 const searchBtn = document.querySelector(".search-bttn");
+const searchModal = document.getElementById("empty-search");
+const modalSearchOkBtn = document.getElementById("ok-btn");
+const addMemberModal = document.getElementById("empty-member");
+const modalMemberOkBtn = document.getElementById("ok-member-btn");
 let formInput = document.querySelector("#book-name");
 const heroNameDisplay = document.querySelector(".hero-name-display");
 let heroGif = document.querySelector(".hero-gif");
@@ -199,11 +203,19 @@ const InputHandler = function () {
 
   if (searchInput) {
     getHeroName(searchInput);
-    // movieBtnDisplay(searchInput);
     formInput.value = "";
   } else {
-    // TODO change to pop up/modal later
-    alert("Please type keywords.");
+    searchModal.style.display = "block";
+
+    modalSearchOkBtn.onclick = function () {
+      searchModal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+      if (event.target == searchModal) {
+        searchModal.style.display = "none";
+      }
+    };
   }
 };
 
@@ -234,12 +246,23 @@ const addToSelectedHeroes = function (hero) {
 const addTeamMember = function () {
   // generate p element and assign it the input.value and push to array
   if (!addHeroInput.value) {
-    alert("type something");
+    addMemberModal.style.display = "block";
+
+    modalMemberOkBtn.onclick = function () {
+      addMemberModal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+      if (event.target == addMemberModal) {
+        addMemberModal.style.display = "none";
+      }
+    };
     return;
   }
 
   getHeroScore(addHeroInput.value).then(function (hero) {
     if (!hero) {
+      debugger;
       alert("No hero");
       return;
     }
