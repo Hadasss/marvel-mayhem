@@ -2,6 +2,8 @@ const scoreboardBtn = document.querySelector(".score-board");
 const searchBtn = document.querySelector(".search-bttn");
 const searchModal = document.getElementById("empty-search");
 const modalSearchOkBtn = document.getElementById("ok-btn");
+const noHeroModal = document.getElementById("no-hero");
+const modalHeroOkBtn = document.getElementById("ok-hero-btn");
 const addMemberModal = document.getElementById("empty-member");
 const modalMemberOkBtn = document.getElementById("ok-member-btn");
 let formInput = document.querySelector("#book-name");
@@ -49,6 +51,24 @@ const getHeroName = function (searchInput) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
+          if (!data) {
+            return null;
+          }
+
+          if (data == null) {
+            noHeroModal.style.display = "block";
+
+            modalHeroOkBtn.onclick = function () {
+              noHeroModal.style.display = "none";
+            };
+
+            window.onclick = function (event) {
+              if (event.target == noHeroModal) {
+                noHeroModal.style.display = "none";
+              }
+            };
+          }
+
           heroNameTitle.textContent = data.data.results[0].name;
           heroDescriptionP.textContent = data.data.results[0].description;
           getHeroGif(searchInput);
@@ -262,8 +282,20 @@ const addTeamMember = function () {
 
   getHeroScore(addHeroInput.value).then(function (hero) {
     if (!hero) {
-      debugger;
-      alert("No hero");
+      // alert("No hero");
+      addHeroInput.textContent = "";
+      noHeroModal.style.display = "block";
+
+      modalHeroOkBtn.onclick = function () {
+        noHeroModal.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == noHeroModal) {
+          noHeroModal.style.display = "none";
+        }
+      };
+
       return;
     }
 
